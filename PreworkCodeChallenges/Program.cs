@@ -7,7 +7,10 @@ namespace PreworkCodeChallenges
         static void Main(string[] args)
         {
             //ProblemOne();
-            ProblemTwo();
+            Console.Clear();
+            //ProblemTwo();
+            Console.Clear();
+            ProblemThree();
         }
 
         static void ProblemOne()
@@ -57,6 +60,55 @@ namespace PreworkCodeChallenges
                 //even year that doesn't meet other exceptions
                 Console.WriteLine($"{year} is a leap year");
             }                
+        }
+
+        static void ProblemThree()
+        {
+            int[] arr = { 1, 3, 2};
+            string isPerfect = CheckPerfection(arr);
+            Console.WriteLine($"Is [{string.Join(", ",arr)}] a perfect sequence? {isPerfect}");
+
+            int[] arr2 = { 0, 0, 0, 0 };
+            isPerfect = CheckPerfection(arr2);
+            Console.WriteLine($"Is [{string.Join(", ", arr2)}] a perfect sequence? {isPerfect}");
+
+            int[] arr3 = { 4, 5, 6 };
+            isPerfect = CheckPerfection(arr3);
+            Console.WriteLine($"Is [{string.Join(", ", arr3)}] a perfect sequence? {isPerfect}");
+        }
+
+        static string CheckPerfection(int[] arr)
+        {
+            int sum = 0;
+            int product = 1;
+            string result = "";
+
+            foreach(int num in arr)
+            {
+                if(num < 0)
+                {
+                    result = "No";
+                }
+                else
+                {
+                    sum += num;
+                    product *= num;
+                }
+            }
+
+            if(result == "")
+            {
+                if(sum == product)
+                {
+                    result = "Yes";
+                }
+                else
+                {
+                    result = "No";
+                }
+            }
+
+            return result;
         }
     }
 }
